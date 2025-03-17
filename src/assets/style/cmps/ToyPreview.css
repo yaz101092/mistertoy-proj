@@ -1,0 +1,37 @@
+.toy-preview {
+    display: grid;
+    justify-items: center;
+    gap: 5px;
+    position: relative;
+    grid-template-rows: auto 1fr; 
+    height: 350px; 
+    width: 100%; 
+}
+
+.toy-preview img {
+    width: 100%; 
+    height: 200px; 
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+/* .on-sale-icon {
+    position: absolute;
+    width: 50px;
+    top: 70px;  
+    left: 50px; 
+    z-index: 2; 
+} */
+
+.toy-preview h3 {
+    height: 80px;
+    margin: 0;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+

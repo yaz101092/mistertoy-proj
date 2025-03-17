@@ -1,0 +1,66 @@
+.toy-list ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    justify-content: center;
+    gap: 10px;
+}
+
+
+.toy-list ul li {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    border-radius: 15px;
+    gap: 5px;
+    padding: 10px;
+    background: linear-gradient(360deg, #72ed70, #f3f1b5);
+}
+
+.close {
+    position: absolute;
+    border-radius: 50%;
+    top: -7px;
+    right: -7px;
+    background: #63c261;
+    color: white;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    padding: 3px 5px;
+    transition: background-color 0.3s, transform 0.2s;
+
+}
+
+.close:hover {
+    background-color: #5e9b5d; 
+    transform: scale(1.1);
+}
+
+.toy-list li:hover img {
+    animation: bounceIn;
+    animation-duration: 2s;
+}
+
+.toy-nav {
+    margin-top: auto;
+    align-self: center;
+}
+
+button {
+    background-color: #f3f1b5;
+    border: none;
+    padding: 2px 5px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #cbc996;
+    transform: scale(1.05); 
+}
+
+

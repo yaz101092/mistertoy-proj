@@ -1,0 +1,14 @@
+.home p {
+    margin-block-start: 10px;
+}
+
+.add-toy-link {
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+}
+
+.add-toy {
+    cursor: pointer;
+}
+

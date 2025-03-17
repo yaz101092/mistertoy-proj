@@ -1,0 +1,67 @@
+.toy-filter {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(-225deg, rgb(216, 245, 169) 30%, #a8e2a7 100%);
+    padding: 10px; 
+    margin-block: .5em 1em;
+    border-radius: 5px;
+}
+
+.toy-filter label {
+    padding: 5px; 
+}
+
+.toy-filter button {
+    margin-left: 10px;
+    background-color: rgb(75, 141, 94);
+    color: white;
+    border: none;
+    padding: 3px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.toy-filter button:hover {
+    background-color: rgb(47, 110, 65); 
+    transform: scale(1.1);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 10px;
+    width: 180px;
+    z-index: 1000;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1;
+}

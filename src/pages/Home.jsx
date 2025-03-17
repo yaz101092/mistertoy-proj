@@ -1,6 +1,7 @@
 // import { ToggleButton } from "../cmps/ToggleButton.jsx"
 
-const { useState } = React
+
+import { useState } from "react";
 
 export function Home() {
     

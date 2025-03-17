@@ -1,4 +1,4 @@
-import { toyService } from '../../service/toy.service.js'
+import { toyService } from '../../services/toy.service.js'
 
 //* Toys
 export const SET_TOYS = 'SET_TOYS'
@@ -17,15 +17,14 @@ export const CLEAR_CART = 'CLEAR_CART'
 
 const initialState = {
     toys: [],
-    lastToys: [],
     filterBy: toyService.getDefaultFilter(),
     isLoading: false,
-    shoppingCart: [],
-    isCartShown: false,
+    lastToys: [],
 }
 
 export function toyReducer(state = initialState, cmd = {}) {
     //* Toys
+   
     switch (cmd.type) {
         case SET_TOYS:
             return {
@@ -64,23 +63,23 @@ export function toyReducer(state = initialState, cmd = {}) {
                 toys: [...state.lastToys]
             }
 
-        //* Shopping cart
-        case TOGGLE_CART_IS_SHOWN:
-            return { ...state, isCartShown: !state.isCartShown }
+        // //* Shopping cart
+        // case TOGGLE_CART_IS_SHOWN:
+        //     return { ...state, isCartShown: !state.isCartShown }
 
-        case ADD_TOY_TO_CART:
-            return {
-                ...state,
-                shoppingCart: [...state.shoppingCart, cmd.toy]
-            }
+        // case ADD_TOY_TO_CART:
+        //     return {
+        //         ...state,
+        //         shoppingCart: [...state.shoppingCart, cmd.toy]
+        //     }
 
-        case REMOVE_TOY_FROM_CART:
-            const shoppingCart = state.shoppingCart.filter(toy => toy._id !== cmd.toyId)
-            return { ...state, shoppingCart }
+        // case REMOVE_TOY_FROM_CART:
+        //     const shoppingCart = state.shoppingCart.filter(toy => toy._id !== cmd.toyId)
+        //     return { ...state, shoppingCart }
 
 
-        case CLEAR_CART:
-            return { ...state, shoppingCart: [] }
+        // case CLEAR_CART:
+        //     return { ...state, shoppingCart: [] }
 
         default:
             return state

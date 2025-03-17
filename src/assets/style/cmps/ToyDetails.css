@@ -1,0 +1,131 @@
+.toy-details{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+
+    margin-block-start: 20px;
+    border-radius: 15px;
+
+    padding: 10px;
+    background: linear-gradient(-225deg, rgb(234, 255, 208) 30%, #9dc1de 100%);
+}
+
+.toy-details-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.toy-details ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px; 
+    padding: 0;
+    list-style: none;
+}
+
+.toy-details li {
+    background-color: #ebffb5;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    flex: 0 1 auto;
+}
+
+.toy-details-nav button {
+    background-color: #8adce6;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 25px;
+    padding: 3px 10px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.toy-details button:hover {
+    background-color: #70b9c1; 
+    transform: scale(1.1);
+}
+
+.bold-txt {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #000;
+}
+
+.toy-details h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: rgb(247, 187, 57);
+    font-weight: 800;
+    font-size: 1.9em;
+    text-transform: uppercase;
+}
+
+.toy-details h3 {
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+.description-title {
+    font-size: 20px;
+    margin-top: 50px;
+    color: blue;
+}
+
+.toy-details .close {
+    background-color: #97dce3;
+    padding: 3px, 5px;
+    font-size: 20px;
+}
+
+/* .high-price {
+    color: red;
+}
+
+.low-price {
+    color: green;
+}
+
+.mid-price {
+    color: black;
+}
+
+.vintage {
+    color: rgb(165, 69, 210);
+}
+
+.new {
+    color: rgb(212, 140, 245);
+}
+
+.light {
+    color:rgb(250, 147, 202)
+}
+
+.descent {
+    color: rgb(207, 71, 143);
+}
+
+.serious {
+    color: rgb(192, 6, 105);
+} */
+
+.toy-details .toy-img {
+    width: 200px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.delete-btn {
+    background-color: #4bc3d8;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 3px 10px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+

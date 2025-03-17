@@ -1,5 +1,8 @@
-import { utilService } from './util.service.js'
+
+// import { loadFromStorage, makeId, saveToStorage} from '../services/util.service.js'
 import { storageService } from './async-storage.service.js'
+import { toys as defaultToys } from '../assets/data/toys.js'
+import { utilService } from '../services/util.service.js'
 
 const TOY_KEY = 'toyDB'
 _createToys()
@@ -14,10 +17,7 @@ export const toyService = {
     getFilterFromSearchParams,
     getSpeedStats,
     // getNameStats,
-    _createBooks
 }
-// For Debug (easy access from console):
-window.toyService = toyService
 
 function query(filterBy = {}) {
     return storageService.query(TOY_KEY)
@@ -97,24 +97,55 @@ function getSpeedStats() {
 //         })
 // }
 
+// function _createToys() {
+//     let toys = utilService.loadFromStorage(TOY_KEY)
+//     if (!toys || !toys.length) {
+//         toys = []
+//         const names = ['Puzzle', 'Lego Set', 'Doll', 'Remote Control Car', 'Musical Keyboard Toy', 'Box Game', 'Teedy Bear',]
+//         for (let i = 0; i < 20; i++) {
+//             const name = names[utilService.getRandomIntInclusive(0, names.length - 1)]
+//             toys.push(_createToy(name, utilService.getRandomIntInclusive(20, 300)))
+//         }
+//         utilService.saveToStorage(TOY_KEY, toys)
+//     }
+// }
+
 function _createToys() {
-    let toys = utilService.loadFromStorage(TOY_KEY)
-    if (!toys || !toys.length) {
-        toys = []
-        const names = ['audu', 'fiak', 'subali', 'mitsu']
-        for (let i = 0; i < 20; i++) {
-            const name = names[utilService.getRandomIntInclusive(0, names.length - 1)]
-            toys.push(_createToy(name, utilService.getRandomIntInclusive(80, 300)))
-        }
-        utilService.saveToStorage(TOY_KEY, toys)
+    let toysInStorage = utilService.loadFromStorage("toyDB");
+    if (!toysInStorage || toysInStorage.length === 0) {
+        const updatedToys = defaultToys.map((toys, i) => ({
+            ...toys,
+            // imgUrl: `/images/${i + 1}.jpg`
+        }))
+        utilService.saveToStorage(TOY_KEY, updatedToys)
     }
 }
 
-function _createToy(name, price = 250) {
-    const toy = getEmptyToy(name, price)
-    toy._id = utilService.makeId()
-    return toy
-}
+
+
+// function _createToy(name, price = 100) {
+//     const toy = getEmptyToy(name, price)
+//     toy._id = utilService.makeId()
+//     return toy
+// }
+
+// function _createToy(name, price = 100) {
+//     return {
+//         _id: utilService.makeId(),
+//         name,
+//         imgUrl: 'https://via.placeholder.com/150', // URL זמני לתמונה
+//         price,
+//         labels: _getRandomLabels(),
+//         createdAt: Date.now(),
+//         inStock: Math.random() > 0.5, // חצי מהצעצועים יהיו במלאי
+//     }
+// }
+
+// function _getRandomLabels() {
+//     const numLabels = utilService.getRandomIntInclusive(1, 3) // כל צעצוע יקבל 1-3 תוויות
+//     const shuffledLabels = labels.sort(() => 0.5 - Math.random()) // ערבוב אקראי של התוויות
+//     return shuffledLabels.slice(0, numLabels)
+// }
 
 function _setNextPrevToyId(toy) {
     return storageService.query(TOY_KEY).then((toys) => {
@@ -145,30 +176,3 @@ function _getToyCountBySpeedMap(toys) {
 //     }, {})
 //     return toyCountByNameMap
 // }
-function _createBooks() {
-    const ctgs = ['Love', 'Fiction', 'Poetry', 'Computers', 'Religion']
-    const books = []
-    for (let i = 0; i < 20; i++) {
-        const book = {
-            id: utilService.makeId(),
-            title: utilService.makeLorem(2),
-            subtitle: utilService.makeLorem(4),
-            authors: [
-                utilService.makeLorem(1)
-            ],
-            publishedDate: utilService.getRandomIntInclusive(1950, 2024),
-            description: utilService.makeLorem(20),
-            pageCount: utilService.getRandomIntInclusive(20, 600),
-            categories: [ctgs[utilService.getRandomIntInclusive(0, ctgs.length - 1)]],
-            thumbnail: `http://coding-academy.org/books-photos/${i+1}.jpg`,
-            language: "en",
-            listPrice: {
-                amount: utilService.getRandomIntInclusive(80, 500),
-                currencyCode: "EUR",
-                isOnSale: Math.random() > 0.7
-            }
-        }
-        books.push(book)
-    }
-    console.log('books', books)
-}

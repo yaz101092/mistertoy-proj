@@ -1,28 +1,30 @@
 import { toyService } from '../services/toy.service.js'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
-import { useConfirmTabClose } from '../hooks/useConfirmTabClose.js'
-import { useOnlineStatus } from '../hooks/useOnlineStatus.js'
+// import { useConfirmTabClose } from '../hooks/useConfirmTabClose.js'
+// import { useOnlineStatus } from '../hooks/useOnlineStatus.js'
 
-const { useState, useEffect, useRef } = React
-const { useNavigate, useParams } = ReactRouterDOM
+// const { useState, useEffect, useRef } = React
+// const { useNavigate, useParams } = ReactRouterDOM
 
+import { useState, useEffect, useRef } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 export function ToyEdit() {
 
     const [toyToEdit, setToyToEdit] = useState(toyService.getEmptyToy())
     const navigate = useNavigate()
-    const params = useParams()
+    const toyId = useParams()
 
     const hasUnsavedChanges = useRef(false)
-    useConfirmTabClose(hasUnsavedChanges.current)
+    // useConfirmTabClose(hasUnsavedChanges.current)
 
     useEffect(() => {
-        if (params.toyId) loadToy()
+        if (toyId) loadToy()
     }, [])
 
     function loadToy() {
-        toyService.get(params.toyId)
+        toyService.get(toyId)
             .then(setToyToEdit)
             .catch(err => console.log('err:', err))
     }
@@ -70,32 +72,32 @@ export function ToyEdit() {
                 <label htmlFor="name">Name:</label>
                 <input onChange={handleChange} value={name} type="text" name="name" id="name" />
 
-                <label htmlFor="price">Max Speed:</label>
+                <label htmlFor="price">Price:</label>
                 <input onChange={handleChange} value={price} type="number" name="price" id="price" />
 
                 <button>Save</button>
             </form>
-            <SaveButton /> 
-            <StatusBar />      
+            {/* <SaveButton /> 
+            <StatusBar />       */}
         </section>
     )
 }
 
-function StatusBar() {
-    const isOnline = useOnlineStatus()
-    return <h1>{isOnline ? '✅ Online' : '❌ Disconnected'}</h1>
-}
+// function StatusBar() {
+//     const isOnline = useOnlineStatus()
+//     return <h1>{isOnline ? '✅ Online' : '❌ Disconnected'}</h1>
+// }
 
-function SaveButton() {
-    const isOnline = useOnlineStatus()
+// function SaveButton() {
+//     const isOnline = useOnlineStatus()
 
-    function handleSaveClick() {
-        console.log('Progress saved')
-    }
+//     function handleSaveClick() {
+//         console.log('Progress saved')
+//     }
 
-    return (
-        <button disabled={!isOnline} onClick={handleSaveClick}>
-            {isOnline ? 'Save progress' : 'Reconnecting...'}
-        </button>
-    )
-}
+//     return (
+//         <button disabled={!isOnline} onClick={handleSaveClick}>
+//             {isOnline ? 'Save progress' : 'Reconnecting...'}
+//         </button>
+//     )
+// }
